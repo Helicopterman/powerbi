@@ -1,0 +1,31 @@
+<html>  
+ <script src="https://microsoft.github.io/PowerBI-JavaScript/demo/node_modules/jquery/dist/jquery.js"></script>
+<script src="https://microsoft.github.io/PowerBI-JavaScript/demo/node_modules/powerbi-client/dist/powerbi.js"></script>
+<script type="text/javascript">
+window.onload = function () {   
+
+var startDatetime = new Date(); //
+
+var embedConfiguration = {
+    type: 'report',
+    accessToken: 'eyJrIjoiYWZjNGI5NDMtY2NlNi00NmIzLWE3N2QtNmE1NWMyOGQwY2NhIiwidCI6IjRiY2YxNmYxLThhYjQtNDJmYy04NWFhLTM0OTcyOTJkNTAyMSIsImMiOjR9',     
+    id:'5ca5278b4755f3ba27a0',
+	embedUrl: 'https://app.powerbi.com/view?r=eyJrIjoiYWZjNGI5NDMtY2NlNi00NmIzLWE3N2QtNmE1NWMyOGQwY2NhIiwidCI6IjRiY2YxNmYxLThhYjQtNDJmYy04NWFhLTM0OTcyOTJkNTAyMSIsImMiOjR9&pageName=ReportSection5ca5278b4755f3ba27a0'
+
+
+}; 
+  
+var $reportContainer = $('#reportContainer'); 
+var report = powerbi.embed($reportContainer.get(0), embedConfiguration); 
+
+report.on("rendered", function() {
+    console.log("rendered");
+	 var txt1 = "<constructor></constructor>";
+	  $("body").append(txt1);
+	
+});
+
+}
+</script>
+<div id="reportContainer"></div>
+</html>
