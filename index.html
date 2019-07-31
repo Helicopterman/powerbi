@@ -17,9 +17,9 @@ var embedConfiguration = {
   
 var $reportContainer = $('#reportContainer'); 
 var report = powerbi.embed($reportContainer.get(0), embedConfiguration); 
-$('#pvExplorationHost > div > div > div > explore-canvas > div > div.canvasFlexBox > div > div.displayArea.disableAnimations.fitToWidthOrigin').attr('id', 'areaReporte');
 report.on("rendered", function() {
     console.log("rendered");
+	$('.displayArea').attr('id', 'areaReporte');
 	 var txt1 = "<constructor></constructor>";
 	  $("body").append(txt1);
 	
