@@ -17,7 +17,7 @@ var embedConfiguration = {
   
 var $reportContainer = $('#reportContainer'); 
 var report = powerbi.embed($reportContainer.get(0), embedConfiguration); 
-
+$(".displayArea").attr('id', 'areaReporte');
 report.on("rendered", function() {
     console.log("rendered");
 	 var txt1 = "<constructor></constructor>";
