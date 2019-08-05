@@ -2,24 +2,47 @@
  <script src="https://microsoft.github.io/PowerBI-JavaScript/demo/node_modules/jquery/dist/jquery.js"></script>
 <script src="https://microsoft.github.io/PowerBI-JavaScript/demo/node_modules/powerbi-client/dist/powerbi.js"></script>
 <script type="text/javascript">
+function getUrlParameter(sParam,url) {
+	if(url == ''){return window.location.search.substring(5);}
+    var sPageURL = (url == '')?window.location.search.substring(1):url.split('?')[1];
+    var sURLVariables = sPageURL.split('&');
+    var sParameterName;
+    var i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+}
 window.onload = function () {   
 
-var startDatetime = new Date(); //
+
+
+
+var	embedUrlvar= getUrlParameter('url','');
+var accessTokenvar = getUrlParameter('r',embedUrlvar)
+var	idvar = getUrlParameter('pageName',embedUrlvar)
 
 var embedConfiguration = {
     type: 'report',
-    accessToken: 'eyJrIjoiYWZjNGI5NDMtY2NlNi00NmIzLWE3N2QtNmE1NWMyOGQwY2NhIiwidCI6IjRiY2YxNmYxLThhYjQtNDJmYy04NWFhLTM0OTcyOTJkNTAyMSIsImMiOjR9',     
-    id:'5ca5278b4755f3ba27a0',
-	embedUrl: 'https://app.powerbi.com/view?r=eyJrIjoiYWZjNGI5NDMtY2NlNi00NmIzLWE3N2QtNmE1NWMyOGQwY2NhIiwidCI6IjRiY2YxNmYxLThhYjQtNDJmYy04NWFhLTM0OTcyOTJkNTAyMSIsImMiOjR9&pageName=ReportSection5ca5278b4755f3ba27a0'
+	accessToken: accessTokenvar,
+	id: idvar,
+	embedUrl: embedUrlvar
+    //accessToken: 'eyJrIjoiYWZjNGI5NDMtY2NlNi00NmIzLWE3N2QtNmE1NWMyOGQwY2NhIiwidCI6IjRiY2YxNmYxLThhYjQtNDJmYy04NWFhLTM0OTcyOTJkNTAyMSIsImMiOjR9',     
+   // id:'eportSection8597bb3b9074e15ce806',
+	//embedUrl: 'https://app.powerbi.com/view?r=eyJrIjoiYWZjNGI5NDMtY2NlNi00NmIzLWE3N2QtNmE1NWMyOGQwY2NhIiwidCI6IjRiY2YxNmYxLThhYjQtNDJmYy04NWFhLTM0OTcyOTJkNTAyMSIsImMiOjR9&pageName=ReportSection5ca5278b4755f3ba27a0'
 
 
 }; 
   
 var $reportContainer = $('#reportContainer'); 
 var report = powerbi.embed($reportContainer.get(0), embedConfiguration); 
+
 report.on("rendered", function() {
     console.log("rendered");
-	$('.displayArea').attr('id', 'areaReporte');
 	 var txt1 = "<constructor></constructor>";
 	  $("body").append(txt1);
 	
@@ -27,7 +50,5 @@ report.on("rendered", function() {
 
 }
 </script>
-<div id="testselector">HOLA</div>
-<div class='fff'>ADIOS</div>
 <div id="reportContainer"></div>
 </html>
