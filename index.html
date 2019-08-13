@@ -48,7 +48,9 @@ report.on("rendered", function() {
 	  $("body").append(txt1);
 	
 });
-
+report.on("loaded", function() {
+    console.log("loaded");
+});
 }
 </script>
 <div id="reportContainer"></div>
