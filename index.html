@@ -57,8 +57,8 @@ report.on("commandTriggered", function() {
 report.on("dataSelected", function() {
     console.log("dataSelected");
 }); 
-report.on("tileClicked", function() {
-    console.log("tileClicked");
+report.on("saved", function() {
+    console.log("saved");
 }); 
 report.on("buttonClicked", function() {
     console.log("buttonClicked");
@@ -66,7 +66,24 @@ report.on("buttonClicked", function() {
 report.on("pageChanged", function() {
     console.log("pageChanged");
 }); 
-	  
+report.on("saveAsTriggered", function() {
+    console.log("saveAsTriggered");
+}); 
+report.on("error", function() {
+    console.log("error");
+}); 
+report.on("filtersApplied", function() {
+    console.log("filtersApplied");
+}); 
+report.on("swipeStart", function() {
+    console.log("swipeStart");
+});
+report.on("swipeEnd", function() {
+    console.log("swipeEnd");
+});
+report.on("bookmarkApplied", function() {
+    console.log("bookmarkApplied");
+});	 
 }
 </script>
 <div id="reportContainer"></div>
