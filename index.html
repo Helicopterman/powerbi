@@ -57,7 +57,16 @@ report.on("commandTriggered", function() {
 report.on("dataSelected", function() {
     console.log("dataSelected");
 }); 
-	
+report.on("tileClicked", function() {
+    console.log("tileClicked");
+}); 
+report.on("buttonClicked", function() {
+    console.log("buttonClicked");
+}); 
+report.on("pageChanged", function() {
+    console.log("pageChanged");
+}); 
+	  
 }
 </script>
 <div id="reportContainer"></div>
