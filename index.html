@@ -51,6 +51,10 @@ report.on("rendered", function() {
 report.on("loaded", function() {
     console.log("loaded");
 }); 
+report.on("commandTriggered", function() {
+    console.log("commandTriggered");
+}); 
+	
 }
 </script>
 <div id="reportContainer"></div>
