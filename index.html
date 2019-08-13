@@ -84,7 +84,7 @@ report.on("swipeEnd", function() {
 report.on("bookmarkApplied", function() {
     console.log("bookmarkApplied");
 });	 
-report.print().catch(error => { ... });
+report.print().catch(error => {console.log(error)});
 }
 </script>
 <div id="reportContainer"></div>
