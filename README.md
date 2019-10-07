@@ -56,7 +56,8 @@ En este ejemplo el compilado tiene por nombre **HDI.wgt** y su version es la **1
 
 Estos archivos deberán ser colocados en una misma ubicación de red visible para la pantalla, para esto se utiliza el Web Server [Apache](https://httpd.apache.org/docs/2.4/es/urlmapping.html)
 
-Una vez los archivos estén listos, debemos acceder al dispositivo SSSP mediante la opción **URL Launcher settings** y elegimos **install Web APP** esto abrirá un cuadro de dialogo para ingresar la URL donde se encuentran los archivos.
+Una vez los archivos estén listos, debemos acceder al dispositivo SSSP mediante la opción **URL Launcher Settings** y elegimos **Install Web APP** esto abrirá un cuadro de dialogo para ingresar la URL donde se encuentran los archivos.
+
 
 Ejemplo:
 
@@ -65,7 +66,9 @@ http://172.30.0.69/apache-server/TV
 
 ```
 
-## NOTA: el dispositivo SSSP debe contar con conexión a internet para la instalación
+Para la instalacion con **USB** se debe crear una carpeta en raiz con el nombre SSSP y tener un formato ya sea en **NTFS** o **FAT32**, dentro de la carpeta **SSSP** colocaremos los 2 archivos ( **.wgt** y **sssp_config.xml**), conectamos la USB al dispositivo SSSP y mediante la opción **URL Launcher Settings** elegimos **Install From USB Device**.
+
+### NOTA: el dispositivo SSSP debe contar con conexión a internet para la instalación
 
 ## Autores
 
