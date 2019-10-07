@@ -54,7 +54,7 @@ Archivo sssp_config.xml
 
 En este ejemplo el compilado tiene por nombre **HDI.wgt** y su version es la **1.0.0** que hacen referencia en el archivo XML.
 
-Estos archivos deberán ser colocados en una ubicación de red visible para la pantalla, para esto se utiliza un Web Server **Apache** y se deben colocar juntos.
+Estos archivos deberán ser colocados en una misma ubicación de red visible para la pantalla, para esto se utiliza el Web Server [Apache](https://httpd.apache.org/docs/2.4/es/urlmapping.html)
 
 Una vez los archivos estén listos, debemos acceder al dispositivo SSSP mediante la opción **URL Launcher settings** y elegimos **install Web APP** esto abrirá un cuadro de dialogo para ingresar la URL donde se encuentran los archivos.
 
