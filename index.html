@@ -1,20 +1,99 @@
-<!DOCTYPE html>
-<html>
-<body>
-
-<h2>An Unordered HTML List</h2>
-
-<ul>
-
-</ul>  
-
-<h2>An Ordered HTML List</h2>
-
-<ol>
-  <li>Coffee</li>
-  <li>Tea</li>
-  <li>Milk</li>
-</ol> 
-
-</body>
+<html>  
+ <script src="https://microsoft.github.io/PowerBI-JavaScript/demo/node_modules/jquery/dist/jquery.js"></script>
+<script src="https://microsoft.github.io/PowerBI-JavaScript/demo/node_modules/powerbi-client/dist/powerbi.js"></script>
+<script type="text/javascript">
+function getUrlParameter(sParam,url) {
+	if(url == ''){return window.location.search.substring(5);}
+    var sPageURL = (url == '')?window.location.search.substring(1):url.split('?')[1];
+    var sURLVariables = sPageURL.split('&');
+    var sParameterName;
+    var i;
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+}
+window.onload = function () {   
+var	embedUrlvar= getUrlParameter('url','');
+var accessTokenvar = getUrlParameter('r',embedUrlvar)
+var	idvar = getUrlParameter('pageName',embedUrlvar)
+var embedConfiguration = {
+    type: 'report',
+	accessToken: accessTokenvar,
+	id: idvar,
+	embedUrl: embedUrlvar,
+settings: {
+            filterPaneEnabled: false,
+            navContentPaneEnabled: false
+           }
+}; 
+  
+var $reportContainer = $('#reportContainer'); 
+var report = powerbi.embed($reportContainer.get(0), embedConfiguration); 
+report.on("rendered", function() {
+	    console.log("rendered");
+	 var txt1 = "<constructor></constructor>";
+	  $("body").append(txt1);
+	
+});
+report.on("loaded", function() {
+    console.log("loaded");
+}); 
+report.on("commandTriggered", function() {
+    console.log("commandTriggered");
+}); 
+report.on("dataSelected", function() {
+    console.log("dataSelected");
+}); 
+report.on("saved", function() {
+    console.log("saved");
+}); 
+report.on("buttonClicked", function() {
+    console.log("buttonClicked");
+}); 
+report.on("pageChanged", function() {
+    console.log("pageChanged");
+}); 
+report.on("saveAsTriggered", function() {
+    console.log("saveAsTriggered");
+}); 
+report.on("error", function() {
+    console.log("error");
+}); 
+report.on("filtersApplied", function() {
+    console.log("filtersApplied");
+}); 
+report.on("swipeStart", function() {
+    console.log("swipeStart");
+});
+report.on("swipeEnd", function() {
+    console.log("swipeEnd");
+});
+report.on("bookmarkApplied", function() {
+    console.log("bookmarkApplied");
+});	 
+	(function() {
+    var proxied = window.XMLHttpRequest.prototype.send;
+    window.XMLHttpRequest.prototype.send = function() {
+        console.log( arguments );
+        //Here is where you can add any code to process the request. 
+        //If you want to pass the Ajax request object, pass the 'pointer' below
+        var pointer = this
+        var intervalId = window.setInterval(function(){
+                if(pointer.readyState != 4){
+                        return;
+                }
+                console.log( pointer.responseText );
+                //Here is where you can add any code to process the response.
+                //If you want to pass the Ajax request object, pass the 'pointer' below
+                clearInterval(intervalId);
+        }, 1);//I found a delay of 1 to be sufficient, modify it as you need.
+        return proxied.apply(this, [].slice.call(arguments));
+    };
+})();
+}
+</script>
+<div id="reportContainer"></div>
 </html>
